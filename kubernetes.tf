@@ -6,6 +6,7 @@ resource "aws_instance" "k8s_master" {
   ami           = "ami-05e00961530ae1b55"
   instance_type = "t2.medium"
   key_name      = "new.pem"
+  security_groups = ["open group"]  # Associate the "open group" security group with the master instance
 
   tags = {
     Name = "K8s-Master"
@@ -31,6 +32,7 @@ resource "aws_instance" "k8s_worker" {
   ami           = "ami-0c55b159cbfafe1f0"
   instance_type = "t2.medium"
   key_name      = "new.pem"
+  security_groups = ["open group"]  # Associate the "open group" security group with the worker instances
 
   tags = {
     Name = "K8s-Worker-${count.index}"
